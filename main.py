@@ -97,10 +97,10 @@ class Commands(IntEnum):
 
 shouldClose = False
 
-# 1 (setModbusValueType) 0 <0: coil, 1: hreg, 2: ist, 3: ireg> 93 (registerName)) 5 (value)
+# 1 (setModbusValueType) 0 <0: coil, 1: hreg, 2: ist, 3: ireg> 4 (register) 6 (value)
 def setModbusValueType(arguments):
     if len(arguments) != 4:
-        print("setModbusValueType <RegisterName> <Value>") 
+        print("setModbusValueType <RegisterType> <Register> <Value>") 
         return
 
     type = int(arguments[1])
@@ -125,7 +125,7 @@ def setModbusValueType(arguments):
     except Exception as e:
         print(f"Failed writing to register {register}: {e}")
 
-# 2 (readModbusValue) <0: coil, 1:hreg, 2: ist, 3:ireg> 93 (register)
+# 2 (readModbusValue) <0: coil, 1:hreg, 2: ist, 3:ireg> 4 (register)
 def readModbusValue(argument):
     if len(argument) != 3:
         print("readModbusValue <type> <address>")
